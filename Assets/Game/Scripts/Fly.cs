@@ -19,4 +19,10 @@ public class Fly : MonoBehaviour
     {
         rigidbody2D.velocity = Vector2.up * jumpPower;
     }
+
+    //If bird collied something game over.
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameManagement.Instance.GameOver();
+    }
 }
