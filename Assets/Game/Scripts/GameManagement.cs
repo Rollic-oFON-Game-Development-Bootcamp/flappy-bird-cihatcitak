@@ -5,10 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManagement : MonoBehaviour
 {
-    #region Singleton
-    private static GameManagement instance;
-    public static GameManagement Instance => instance ?? (instance = FindObjectOfType<GameManagement>());
-    #endregion
+    [SerializeField] UIManager uIManager;
+
 
     private void Start()
     {
@@ -17,12 +15,12 @@ public class GameManagement : MonoBehaviour
 
     public void GameOver()
     {
-        UIManager.Instance.ShowGameOverPanelHideGameInPanel();
+        uIManager.ShowGameOverPanelHideGameInPanel();
 
         Time.timeScale = 0f;
     }
 
-    public void ReStartLevel()
+    public void RestartLevel()
     {
         SceneManager.LoadSceneAsync(0);
     }

@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Fly : MonoBehaviour
 {
+    [SerializeField] GameManagement gameManager;
     [SerializeField] Rigidbody2D rigidbody2D;
     [SerializeField] float jumpPower = 1f;
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Jump();
         }
@@ -23,6 +24,6 @@ public class Fly : MonoBehaviour
     //If bird collied something game over.
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameManagement.Instance.GameOver();
+        gameManager.GameOver();
     }
 }

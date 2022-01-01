@@ -6,19 +6,18 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    #region Singleton
-    private static UIManager instance;
-    public static UIManager Instance => instance ?? (instance = FindObjectOfType<UIManager>());
-    #endregion
-
+    [SerializeField] GameManagement gameManager;
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject gameInPanel;
     [SerializeField] TextMeshProUGUI scoreText;
 
+    public void RestartLevel()
+    {
+        gameManager.RestartLevel();
+    }
+
     public void ShowGameOverPanelHideGameInPanel()
     {
-        Debug.Log(gameOverPanel);
-
         gameOverPanel.SetActive(true);
 
         gameInPanel.SetActive(false);
@@ -29,10 +28,5 @@ public class UIManager : MonoBehaviour
         gameInPanel.SetActive(true);
 
         gameOverPanel.SetActive(false);
-    }
-
-    public void UpdateScoreText(int score)
-    {
-        scoreText.SetText(score.ToString());
     }
 }
